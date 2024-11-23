@@ -1,0 +1,438 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda&family=Poppins:wght@300&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary-color: rgb(27, 47, 48);
+    --secondary-color: rgb(226, 195, 154);
+}
+
+body {
+    background-color: var(--primary-color);
+}
+
+body.login-background {
+    background-color: #d6d6d6;
+}
+
+html {
+    font-size: 90%;
+}
+
+.header {
+    width: 100%;
+    height: 350px;
+    color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 5px 10px var(--secondary-color);
+}
+
+.header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img1.jpg);
+    z-index: -1;
+}
+
+.row2 {
+    width: 100%;
+    position: absolute;
+    top: 10px;
+    text-align: center;
+}
+
+.row2 h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 20px 0 15px;
+}
+
+.row2 img {
+    margin-top: 30px;
+    width: 250px;
+}
+
+.logo {
+    margin-left: 5%;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.button {
+    width: 100%;
+    max-width: 130px;
+    padding: 16px 20px;
+    background-color: #046ee5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+
+    &:active {
+        background-color: #003f7f;
+    }
+}
+
+.login {
+    margin-left: 60%;
+}
+
+.logout {
+    margin-left: 65%;
+}
+
+.connected-label {
+    display: block;
+    margin: 10px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* Cor para quando o usuário está logado */
+.connected-label.connected {
+    color: rgb(0, 255, 0);
+}
+
+/* Cor para quando o usuário não está logado */
+.connected-label.disconnected {
+    color: rgb(252, 27, 27);
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+    gap: 0;
+}
+
+.search input {
+    border: 1px solid #afafaf;
+    width: 50%;
+    height: 40px;
+    padding: 0 1rem;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    border-radius: 5px 0 0 5px;
+    box-sizing: border-box;
+}
+
+.search button {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: #c2c2c2;
+    color: white;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.error-label {
+    color: rgb(255, 63, 63);
+    font-size: 20px;
+}
+
+.error-message {
+    color: rgb(255, 63, 63);
+    background-color: rgba(255, 63, 63, 0.1);
+    padding: 10px;
+    border: 1px solid rgb(255, 63, 63);
+    border-radius: 5px;
+    margin: 10px auto;
+    width: 50%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.no-results {
+    color: rgb(255, 63, 63);
+    background-color: rgba(255, 63, 63, 0.1);
+    padding: 20px;
+    border: 1px solid rgb(255, 63, 63);
+    border-radius: 5px;
+    width: 70%;
+    max-width: 90%;
+    height: auto;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    word-wrap: break-word;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    margin: 20px auto;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.suggestions {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 51.9%;
+    max-height: 350px;
+    background-color: white;
+    color: black;
+    font-size: 15px;
+    border: 1px solid #afafaf;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    overflow-y: auto;
+    z-index: 10;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.suggestions li {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.suggestions li img {
+    width: 7%;
+    height: 100%;
+    margin-right: 10px;
+}
+
+.suggestions li:hover {
+    background-color: #f0f0f0;
+}
+
+.container {
+    width: 65%;
+    margin: 25px auto 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 0.5fr));
+    grid-gap: 20px;
+    box-sizing: border-box;
+}
+
+.card {
+    background-color: var(--secondary-color);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin-bottom: 10px;
+    box-shadow: 0 5px 5px rgba(212, 185, 150, .5);
+    text-align: center;
+    position: relative;
+    transition: .5s;
+}
+
+.card:hover {
+    transform: scale(0.9);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.card .bottom {
+    display: flex;
+    flex-direction: column;
+}
+
+.card .bottom .title {
+    font-size: 14px;
+    margin-bottom: 32px;
+}
+
+.card .bottom .amount {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-size: 13px;
+    font-weight: bold;
+    padding: 0.2rem;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay-inner {
+    background: white;
+    width: 700px;
+    height: auto;
+    max-height: 80vh;
+    padding: 1.5rem;
+    position: relative;
+    box-sizing: border-box;
+    overflow-y: auto;
+    font-size: 1.3rem;
+}
+
+.overlay-inner .close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 17px;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.overlay-inner .close:hover {
+    color: rgb(252, 27, 27);
+    transform: scale(1.2);
+}
+
+.overlay-inner .close:active {
+    color: rgb(255, 0, 0);
+    transform: scale(1);
+}
+
+/* Estilos para o botão "Mais informações" */
+.overlay-inner .inner-box button {
+    width: 200px;
+    padding: 0.3rem 0.5rem;
+    border-radius: 5px;
+    background-color: #000000;
+    color: white;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.overlay-inner .inner-box button:hover {
+    background-color: #555555;
+    transform: scale(1.05);
+}
+
+.overlay-inner .inner-box button:active {
+    background-color: #333333;
+    transform: scale(1);
+}
+
+.overlay-inner .inner-box img {
+    width: 150px;
+    height: 200px;
+    margin-right: 20px;
+}
+
+.overlay-inner .inner-box h3 {
+    margin-top: 10px;
+    color: green;
+}
+
+.overlay-inner .inner-box h4 {
+    color: rgb(0, 0, 0);
+}
+
+.overlay-inner .inner-box button {
+    width: 200px;
+    padding: 0.3rem 0.5rem;
+    border-radius: 5px;
+    background-color: #000000;
+    color: white;
+    font-weight: bold;
+    border: none;
+    outline: none;
+}
+
+.overlay-inner .description {
+    margin-top: 2rem;
+    text-align: justify;
+    font-size: 13px;
+}
+
+@media (max-width: 768px) {
+
+    .header {
+        margin-bottom: 70px;
+    }
+
+    .login,
+    .logout {
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .button {
+        max-width: 30%;
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+
+    .container {
+        width: 75%;
+    }
+
+    .no-results {
+        font-size: 16px;
+        /* Reduz o tamanho do texto para melhor adaptação */
+        padding: 15px;
+        /* Reduz o espaçamento interno */
+    }
+
+    .overlay-inner {
+        width: 90%;
+        max-height: 70vh;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .row2 h2 {
+        font-size: 1.8rem;
+    }
+}
